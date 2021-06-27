@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse, redirect
 
 # Create your views here.
-def index(request):
+def register_login(request):
     return render(request, 'index.html')
