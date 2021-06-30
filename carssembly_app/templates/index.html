@@ -8,8 +8,28 @@
     </nav>
     <div class="container-sm p-0">
         <div class="row mt-5 p-5">
+            <div class="col-12">
+                {% if messages %}
+                <div class="d-flex m-2 align-items-center flex-column bg-light rounded p-0">
+                    <ul class="m-0">
+                    {% for message in messages %}
+                    <li style="list-style: none;">
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                        <p class="display-5 p-1 m-0 text-danger">{{message}}</p>
+                        {% endif %}
+                    </li>
+                    <li style="list-style: none;">
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                            <p class="display-5 p-1 m-0 text-success">{{message}}</p>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
                 <div class="col-12 col-sm-12 col-md-6">
-                    <form action="" class="border p-3 bg-light rounded">
+                    <form action="/registration" method="POST" class="border p-3 bg-light rounded">
                         <p class="h1">Register</p>
                         {% csrf_token %}
                         <div class="form-group">
@@ -50,19 +70,19 @@
                     </form>
                 </div>
                 <div id='login' class="col-12 col-sm-12 col-md-6">
-                    <form action="" class="border p-3 bg-light rounded">
+                    <form action="/login" method="POST" class="border p-3 bg-light rounded">
                         <p class="h1">Login</p>
                         {% csrf_token %}
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control">
+                            <input type="email" name="email" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="password">Password:</label>
-                            <input type="password" class="form-control">
+                            <input type="password" name="password" class="form-control">
                         </div>
                         <div class="d-flex justify-content-center">
-                            <div class="btn btn-primary">Login</div>
+                            <button class="btn btn-primary">Login</button>
                         </div>
                     </form>
                 </div>
