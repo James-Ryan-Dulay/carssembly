@@ -11,10 +11,30 @@ body {
     background-attachment: fixed;
 }
 
+#mainboard {
+    background-repeat: space;
+    background-size: 100%;
+    background-position: top;
+    background-attachment: fixed;
+}
+
+#footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+
 @media only screen and (max-width: 1054px){
     #bg {
         background-repeat: no-repeat;
         background-size: 150vh 100vw;
+        background-position: top;
+        background-attachment: fixed;
+    }
+    #mainboard {
+        background-repeat: no-repeat;
+        background-size: 150vh 150vw;
         background-position: top;
         background-attachment: fixed;
     }
@@ -33,6 +53,12 @@ body {
         background-position: top;
         background-attachment: fixed;
     }
+    #mainboard {
+        background-repeat: no-repeat;
+        background-size: 150vh 200vw;
+        background-position: top;
+        background-attachment: fixed;
+    }
 }
 
 @media only screen and (max-width: 500px){
@@ -42,10 +68,22 @@ body {
         background-position: top;
         background-attachment: fixed;
     }
+    #mainboard {
+        background-repeat: no-repeat;
+        background-size: 100vh 176vw;
+        background-position: top;
+        background-attachment: fixed;
+    }
 }
 
 @media only screen and (max-width: 414px){
     #bg {
+        background-repeat: no-repeat;
+        background-size: 100vh 350vw;
+        background-position: top;
+        background-attachment: fixed;
+    }
+    #maiboard {
         background-repeat: no-repeat;
         background-size: 100vh 350vw;
         background-position: top;
