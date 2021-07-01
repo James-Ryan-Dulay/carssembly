@@ -27,6 +27,12 @@ class UserManager(models.Manager):
             errors['confirm_password'] = 'your password did not match'
         return errors
 
+    def login_validate(self, post_data):
+        errors = {}
+        if not len(post_data['email']) and not len(post_data['password']):
+            errors['all'] = 'please fill out the login form'
+        return errors
+
     def authenticate(self, email, password):
         users = self.filter(email=email)
         if not users:

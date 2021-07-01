@@ -10,10 +10,16 @@ def login(request):
     if request.method == 'POST':
         email = request.POST['email']
         password = request.POST['password']
+        errors = User.objects.login_validate(request.POST)
+        if len(errors) > 0:
+            for key, value in errors.items():
+                messages.error(request,value)
+                return redirect('/')
         if not User.objects.authenticate(email, password):
             messages.error(request, 'your email and password did not match our records')
             return redirect('/')
     user = User.objects.get(email=email)
+    print(user.email)
     request.session['user_firstname'] = user.firstname
     request.session['user_id'] = user.id
     return redirect('/mainboard')
