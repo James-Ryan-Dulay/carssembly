@@ -26,7 +26,7 @@ def login(request):
 
 def mainboard(request):
     if 'user_id' not in request.session:
-        return HttpResponse('<h1>Log in using your account dummy</h1>')
+        return HttpResponse('<h1>Log in using your account dummy</h1> <a href="/"> Login </a>')
     return render(request, 'mainboard.html')
 
 def logout(request):
@@ -56,4 +56,6 @@ def registration(request):
         return redirect('/')
 
 def event(request):
+    if 'user_id' not in request.session:
+        return HttpResponse('<h1> please login using your account </h1> <a href="/"> Login </a>')
     return render(request, 'event.html')
