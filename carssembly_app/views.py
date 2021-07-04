@@ -54,3 +54,6 @@ def registration(request):
         hash_pw = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
         User.objects.create(firstname=firstname, lastname=lastname, nickname=nickname, age=age, hometown=hometown, email=email, password=hash_pw)
         return redirect('/')
+
+def event(request):
+    return render(request, 'event.html')
