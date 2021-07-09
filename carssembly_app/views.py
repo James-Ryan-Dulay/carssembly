@@ -27,7 +27,10 @@ def login(request):
 def mainboard(request):
     if 'user_id' not in request.session:
         return HttpResponse('<h1>Log in using your account dummy</h1> <a href="/"> Login </a>')
-    return render(request, 'mainboard.html')
+    context = {
+        'events' : Event.objects.all()
+    }
+    return render(request, 'mainboard.html', context)
 
 def logout(request):
     del request.session['user_id']
@@ -55,7 +58,26 @@ def registration(request):
         User.objects.create(firstname=firstname, lastname=lastname, nickname=nickname, age=age, hometown=hometown, email=email, password=hash_pw)
         return redirect('/')
 
-def event(request):
+def event(request, event_id):
     if 'user_id' not in request.session:
         return HttpResponse('<h1> please login using your account </h1> <a href="/"> Login </a>')
-    return render(request, 'event.html')
+    context = {
+        'event' : Event.objects.get(id=event_id)
+    }
+    return render(request, 'event.html', context)
+
+def add_event(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        date = request.POST['date']
+        time = request.POST['time']
+        location = request.POST['location']
+        description = request.POST['description']
+        print(title)
+        print(date)
+        print(time)
+        print(location)
+        print(description)
+        user = User.objects.get(id=request.session['user_id'])
+        Event.objects.create(title=title, date=date, time=time, location=location, description=description, user=user)
+        return redirect('/mainboard')

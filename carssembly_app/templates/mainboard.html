@@ -4,36 +4,36 @@
 {% load static %}
 <body id="mainboard" style="background-image:url('{% static 'img/mainboard.jpg' %}');">
     <nav class="navbar d-flex flex-wrap justify-content-between bg-dark text-light p-0">
-        <h1 class="display-5 p-3" style="letter-spacing:5px;" >Carssembly</h1>
+        <a href="/mainboard" class="btn text-light"><h1 class="display-5 p-3 m-0" style="letter-spacing:5px;">Carssembly</h1></a>
         <a href="/logout" class="text-danger mr-3">Logout</a>
     </nav>
     <div class="container">
         <div class="row">
             <div class="col">
                 <div class="d-flex text-light justify-content-center">
-                    <form action="" class="bg-dark p-2 rounded m-4" method="POST">
+                    <form action="/add_event" class="bg-dark p-2 rounded m-4" style="width: 50%;" method="POST">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label for="eventTitle">Event</label>
-                            <input type="text" class="form-control">
+                            <label for="title">Event</label>
+                            <input type="text" class="form-control" name="title">
                         </div>
-                        <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-between">
                             <div class="form-group mr-4">
                                 <label for="date">Date</label>
-                                <input type="date" class="form-control">
+                                <input type="date" class="form-control" name="date">
                             </div>
                             <div class="form-group">
                                 <label for="time">Time</label>
-                                <input type="time" class="form-control">
+                                <input type="time" class="form-control" name="time">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="location">Location</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="location">
                         </div>
                         <div class="form-group">
                             <label for="location">Description</label>
-                            <textarea name="location" cols="30" rows="10" class="form-control"></textarea>
+                            <textarea name="description" cols="30" rows="10" class="form-control"></textarea>
                         </div>
                         <div class="d-flex justify-content-center">
                             <button class="btn text-light border-light" type="submit">Create</button>
@@ -43,21 +43,22 @@
             </div>
         </div>
         <div class="row mt-5 d-flex justify-content-between">
+            {% for event in events %}
             <div class="col-xl-5 col-lg-12 col-md-12 bg-light text-dark mb-5 rounded">
                 <div class="d-flex flex-column justify-content-center align-items-center text-wrap">
                     <table class="table m-0">
                         <tbody>
                             <tr>
                                 <th class="text-center p-0" scope="row">Event</th>
-                                <td class="text-center p-0">Event title</td>
+                                <td class="text-center p-0">{{event.title}}</td>
                             </tr>
                             <tr>
                                 <th class="text-center p-0" scope="row">Date | Time </th>
-                                <td class="text-center p-0">Date and Time</td>
+                                <td class="text-center p-0">{{event.date}} @ {{event.time}}</td>
                             </tr>
                             <tr>
                                 <th class="text-center p-0" scope="row">Location</th>
-                                <td class="text-center p-0">Set location</td>
+                                <td class="text-center p-0">{{event.location}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -65,13 +66,7 @@
                         <p class="mb-2">Description</p>
                         <div class="text-center mb-3 border-top border-bottom border-dark" style="height: 200px; width:300px; overflow: scroll;">
                             <p>
-                                sample descriptionsample descriptionsample descriptionsample descriptionsample descriptionsample descriptionsample descriptionsample descriptionsample descriptionsample descriptionsample description
-                                sample descriptionsample descriptionsample descriptionsample description
-                                sample descriptionsample descriptionsample descriptionsample description
-                                sample descriptionsample descriptionsample descriptionsample description
-                                sample descriptionsample descriptionsample descriptionsample description
-                                sample descriptionsample descriptionsample descriptionsample description
-                                sample descriptionsample descriptionsample descriptionsample description
+                                {{event.description}}
                             </p>
                         </div>
                     </div>
@@ -85,9 +80,11 @@
                             <button class="btn text-info border-info">Interested</button>
                         </div>
                     </div>
-                    <a href="/event" class="text-info mt-3 mb-2">Click for more info</a>
+                    <a href="/event/{{event.id}}" class="text-info mt-3 mb-2">Click for more info</a>
+                    <small class="mb-1">{{event.id}}</small>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
     <div class="container-fluid">

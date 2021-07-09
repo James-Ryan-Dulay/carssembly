@@ -7,5 +7,6 @@ urlpatterns = [
     path('login', views.login),
     path('mainboard', views.mainboard),
     path('logout', views.logout),
-    path('event', views.event)
+    path('event/<int:event_id>', views.event),
+    path('add_event', views.add_event)
 ]
