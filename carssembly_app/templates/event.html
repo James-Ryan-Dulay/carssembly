@@ -15,7 +15,10 @@
                     <p style="width: 500px; height:150px; text-align: center; border-top: 1px solid; border-bottom: 1px solid black; overflow: scroll;" class="m-0 pt-3" >{{event.description}}</p>
                     <p class="mt-3 mb-1">{{event.time}} | {{event.date}} </p>
                     <p> <span style="font-size: 20px;" class="mr-3">@</span>{{event.location}}</p>
-                    <span class="mb-3">The Google API here</span>
+                    <img class="img mb-5" src="https://maps.googleapis.com/maps/api/staticmap?center={{event.location}}&zoom=13&size=600x300&maptype=roadmap
+                    &markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318
+                    &markers=color:red%7Clabel:C%7C40.718217,-73.998284
+                    &key=AIzaSyD6PloCZaC3cB9PlMEHZqRavjNDT-_SG8k" alt="">
                 </div>
             </div>
         </div>
