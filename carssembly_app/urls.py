@@ -8,5 +8,7 @@ urlpatterns = [
     path('mainboard', views.mainboard),
     path('logout', views.logout),
     path('event/<int:event_id>', views.event),
-    path('add_event', views.add_event)
+    path('add_event', views.add_event),
+    path('user_join/<int:event_id>', views.user_join),
+    path('user_interest/<int:event_id>', views.user_interest),
 ]

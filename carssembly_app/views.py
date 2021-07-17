@@ -81,3 +81,15 @@ def add_event(request):
         user = User.objects.get(id=request.session['user_id'])
         Event.objects.create(title=title, date=date, time=time, location=location, description=description, user=user)
         return redirect('/mainboard')
+
+def user_join(request, event_id):
+    event = Event.objects.get(id=event_id)
+    user = request.session['user_id']
+    event.join.add(user)
+    return redirect('/mainboard')
+
+def user_interest(request, event_id):
+    event = Event.objects.get(id=event_id)
+    user = request.session['user_id']
+    event.interest.add(user)
+    return redirect('/mainboard')
