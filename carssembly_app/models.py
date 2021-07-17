@@ -66,8 +66,10 @@ class Event(models.Model):
     location = models.CharField(max_length=255)
     description = models.TextField()
     user = models.ForeignKey(User, related_name='events', on_delete = models.CASCADE)
+    join = models.ManyToManyField(User, related_name='joins')
+    interest = models.ManyToManyField(User, related_name='interests')
     created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f'{self.title} {self.date} {self.time}'
+        return f'{self.title} {self.date} {self.time} {self.join}'
