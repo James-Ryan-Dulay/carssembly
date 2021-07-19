@@ -15,10 +15,61 @@
                     <p style="width: 500px; height:150px; text-align: center; border-top: 1px solid; border-bottom: 1px solid black; overflow: scroll;" class="m-0 pt-3" >{{event.description}}</p>
                     <p class="mt-3 mb-1">{{event.time}} | {{event.date}} </p>
                     <p> <span style="font-size: 20px;" class="mr-3">@</span>{{event.location}}</p>
-                    <img class="img mb-5" src="https://maps.googleapis.com/maps/api/staticmap?center={{event.location}}&zoom=13&size=600x300&maptype=roadmap
+                    <img class="img-fluid mb-5" src="https://maps.googleapis.com/maps/api/staticmap?center={{event.location}}&zoom=13&size=600x300&maptype=roadmap
                     &markers=color:blue%7Clabel:S%7C40.702147,-74.015794&markers=color:green%7Clabel:G%7C40.711614,-74.012318
                     &markers=color:red%7Clabel:C%7C40.718217,-73.998284
                     &key=AIzaSyD6PloCZaC3cB9PlMEHZqRavjNDT-_SG8k" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="container-sm bg-light mt-3 pb-1">
+                    <div class="text-center m-0">
+                        <h1>Discussions</h1>
+                    </div>
+                    <div class="d-flex justify-content-around">
+                        <div class="d-flex align-items-center mb-5">
+                            <h5 style="border: 4px solid #007bff;" class="text-primary pt-3 pb-3 pr-4 pl-4 rounded-circle">{{event.join.count}}</h5>
+                            <p>will be joining the event</p>
+                        </div>
+                        <div class="d-flex align-items-center mb-5">
+                            <h5 style="border: 4px solid #17a2b8;" class="text-info pt-3 pb-3 pr-4 pl-4 rounded-circle">{{event.interest.count}}</h5>
+                            <p>are intereted in the event</p>
+                        </div>
+                    </div>
+                    <div style="border: 10px solid limegreen; border-style:ridge;">
+                        {% for discuss in event.event_discuss.all %}
+                        <ul class="m-3" style="list-style:none;">
+                            <li>
+                                <div class="d-flex justify-content-between">
+                                    <h4>{{discuss.user.firstname}} {{discuss.user.lastname}}</h4>
+                                    {% if request.session.user_id == discuss.user.id %}
+                                    <a href="/discuss_delete/{{discuss.id}}/{{event.id}}" class="btn text-danger border-danger">Remove</a>
+                                    {% endif %}
+                                </div>
+                                <ul class="m-0" style="list-style: none;">
+                                    <li>{{discuss.discuss}}</li>
+                                </ul>
+                                <hr class="m-0">
+                            </li>
+                        </ul>
+                        {% endfor %}
+                    </div>
+                    <div class="m-5">
+                        <form action="/add_discussion/{{event.id}}" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <textarea name="discuss" id="" cols="10" rows="2" class="form-control" placeholder="Write something about the event or start the discussion..."></textarea>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <button type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <a href="/mainboard" class="btn btn-primary mt-2">Back to Mainboard</a>
                 </div>
             </div>
         </div>
