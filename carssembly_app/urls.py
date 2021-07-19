@@ -11,4 +11,6 @@ urlpatterns = [
     path('add_event', views.add_event),
     path('user_join/<int:event_id>', views.user_join),
     path('user_interest/<int:event_id>', views.user_interest),
+    path('add_discussion/<int:event_id>', views.add_discussion),
+    path('discuss_delete/<int:discuss_id>/<int:event_id>', views.discuss_delete),
 ]

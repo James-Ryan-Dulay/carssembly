@@ -57,7 +57,7 @@ class User(models.Model):
     objects = UserManager()
 
     def __str__(self):
-        return f'{self.firstname} {self.lastname} {self.nickname}'
+        return f'{self.firstname} {self.lastname}'
 
 class Event(models.Model):
     title = models.CharField(max_length=255)
@@ -73,3 +73,13 @@ class Event(models.Model):
 
     def __str__(self):
         return f'{self.title} {self.date} {self.time} {self.join}'
+
+class Discuss(models.Model):
+    discuss = models.TextField()
+    user = models.ForeignKey(User, related_name='user_discuss', on_delete= models.CASCADE)
+    event = models.ForeignKey(Event, related_name='event_discuss', on_delete= models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.discuss} {self.event}'

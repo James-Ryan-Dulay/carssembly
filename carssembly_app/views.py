@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 def register_login(request):
@@ -19,7 +20,6 @@ def login(request):
             messages.error(request, 'your email and password did not match our records')
             return redirect('/')
     user = User.objects.get(email=email)
-    print(user.email)
     request.session['user_firstname'] = user.firstname
     request.session['user_id'] = user.id
     return redirect('/mainboard')
@@ -73,11 +73,6 @@ def add_event(request):
         time = request.POST['time']
         location = request.POST['location']
         description = request.POST['description']
-        print(title)
-        print(date)
-        print(time)
-        print(location)
-        print(description)
         user = User.objects.get(id=request.session['user_id'])
         Event.objects.create(title=title, date=date, time=time, location=location, description=description, user=user)
         return redirect('/mainboard')
@@ -93,3 +88,16 @@ def user_interest(request, event_id):
     user = request.session['user_id']
     event.interest.add(user)
     return redirect('/mainboard')
+
+def add_discussion(request, event_id):
+    if request.method == 'POST':
+        user = User.objects.get(id=request.session['user_id'])
+        event = Event.objects.get(id=event_id)
+        discuss = request.POST['discuss']
+        Discuss.objects.create(discuss=discuss, user=user, event=event)
+        return redirect(f'/event/{event_id}')
+
+def discuss_delete(request, discuss_id, event_id):
+    discuss = Discuss.objects.get(id=discuss_id)
+    discuss.delete()
+    return redirect(f'/event/{event_id}')
