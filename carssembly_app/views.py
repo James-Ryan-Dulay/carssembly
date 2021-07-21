@@ -1,7 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
 from .models import *
 from django.contrib import messages
-from django.http import HttpResponseRedirect
 
 # Create your views here.
 def register_login(request):
@@ -43,9 +42,6 @@ def registration(request):
         for key, value in errors.items():
                 messages.error(request, value)
         return redirect('/')
-    if not len(errors):
-        messages.success(request, 'You have registered successfully')
-        return redirect('/')
     if request.method == 'POST':
         firstname = request.POST['firstname']
         lastname = request.POST['lastname']
@@ -54,8 +50,12 @@ def registration(request):
         hometown = request.POST['hometown']
         email = request.POST['email']
         password = request.POST['password']
+        print(password)
         hash_pw = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()
+        print(hash_pw)
         User.objects.create(firstname=firstname, lastname=lastname, nickname=nickname, age=age, hometown=hometown, email=email, password=hash_pw)
+        if not len(errors):
+            messages.success(request, 'You have registered successfully')
         return redirect('/')
 
 def event(request, event_id):
