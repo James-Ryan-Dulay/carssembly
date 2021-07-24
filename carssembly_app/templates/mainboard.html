@@ -5,7 +5,16 @@
 <body id="mainboard" style="background-image:url('{% static 'img/mainboard.jpg' %}');">
     <nav class="navbar d-flex flex-wrap justify-content-between bg-dark text-light p-0">
         <a href="/mainboard" class="btn text-light"><h1 class="display-5 p-3 m-0" style="letter-spacing:5px;">Carssembly</h1></a>
-        <a href="/logout" class="text-danger mr-3">Logout</a>
+        <div class="d-flex align-items-center mr-3">
+            <div style="display: none;" id="drop_menu" class="d-flex align-items-center justify-content-center flex-column bg-dark p-2 rounded">
+                <a href="" class="mt-1">Profile</a>
+                <a href="/logout" class="btn text-danger">Logout</a>
+            </div>
+            <img id="profile" class="img-fluid" src="{% static 'img/profile.png' %}">
+            <p class="mr-2 ml-2 mb-0">{{request.session.user_firstname}}</p>
+            <input id="down_profile" type="image" src="{% static 'img/down_arrow.png' %}" class="img-fluid arrows ml-1">
+            <input id="up_profile" type="image" src="{% static 'img/up_arrow.png' %}" class="img-fluid arrows ml-1" style="display: none;">
+        </div>
     </nav>
     <div class="container">
         <div class="row">
@@ -99,5 +108,6 @@
             </div>
         </div>
     </div>
+    {% include 'partials/jquery.html' %}
 </body>
 </html>

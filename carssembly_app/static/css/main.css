@@ -1,92 +1,108 @@
 body {
-    font-family: 'Orbitron', sans-serif;
-    padding: 0px;
-    margin: 0px;
+	font-family: 'pOrbitron', sans-serif;
+	padding: 0px;
+	margin: 0px;
 }
 
 #bg {
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: top;
-    background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: top;
+	background-attachment: fixed;
 }
 
 #mainboard {
-    background-repeat: space;
-    background-size: 100%;
-    background-position: top;
-    background-attachment: fixed;
+	background-repeat: space;
+	background-size: 100%;
+	background-position: top;
+	background-attachment: fixed;
 }
 
 #footer {
-    position: fixed;
-    width: 100%;
-    left: 0;
-    bottom: 0;
+	position: fixed;
+	width: 100%;
+	left: 0;
+	bottom: 0;
 }
 
-@media only screen and (max-width: 1054px){
-    #bg {
-        background-repeat: no-repeat;
-        background-size: 150vh 100vw;
-        background-position: top;
-        background-attachment: fixed;
-    }
-    #mainboard {
-        background-repeat: no-repeat;
-        background-size: 150vh 150vw;
-        background-position: top;
-        background-attachment: fixed;
-    }
+#profile {
+	width: 50px;
+	height: 50px;
 }
 
-@media only screen and (max-width: 764px){
-    #login {
-        margin-top: 30px;
-    }
+nav .arrows {
+	width: 20px;
+	height: 20px;
 }
 
-@media only screen and (max-width: 702px){
-    #bg {
-        background-repeat: no-repeat;
-        background-size: 150vh 200vw;
-        background-position: top;
-        background-attachment: fixed;
-    }
-    #mainboard {
-        background-repeat: no-repeat;
-        background-size: 150vh 200vw;
-        background-position: top;
-        background-attachment: fixed;
-    }
+#drop_menu {
+	position: relative;
+	top: 90px;
+	right: -145px;
 }
 
-@media only screen and (max-width: 500px){
-    #bg {
-        background-repeat: no-repeat;
-        background-size: 100vh 176vw;
-        background-position: top;
-        background-attachment: fixed;
-    }
-    #mainboard {
-        background-repeat: no-repeat;
-        background-size: 100vh 176vw;
-        background-position: top;
-        background-attachment: fixed;
-    }
+@media only screen and (max-width: 1054px) {
+	#bg {
+		background-repeat: no-repeat;
+		background-size: 150vh 100vw;
+		background-position: top;
+		background-attachment: fixed;
+	}
+	#mainboard {
+		background-repeat: no-repeat;
+		background-size: 150vh 150vw;
+		background-position: top;
+		background-attachment: fixed;
+	}
 }
 
-@media only screen and (max-width: 414px){
-    #bg {
-        background-repeat: no-repeat;
-        background-size: 100vh 350vw;
-        background-position: top;
-        background-attachment: fixed;
-    }
-    #maiboard {
-        background-repeat: no-repeat;
-        background-size: 100vh 350vw;
-        background-position: top;
-        background-attachment: fixed;
-    }
+@media only screen and (max-width: 764px) {
+	#login {
+		margin-top: 30px;
+	}
+}
+
+@media only screen and (max-width: 702px) {
+	#bg {
+		background-repeat: no-repeat;
+		background-size: 150vh 200vw;
+		background-position: top;
+		background-attachment: fixed;
+	}
+	#mainboard {
+		background-repeat: no-repeat;
+		background-size: 150vh 200vw;
+		background-position: top;
+		background-attachment: fixed;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	#bg {
+		background-repeat: no-repeat;
+		background-size: 100vh 176vw;
+		background-position: top;
+		background-attachment: fixed;
+	}
+	#mainboard {
+		background-repeat: no-repeat;
+		background-size: 100vh 176vw;
+		background-position: top;
+		background-attachment: fixed;
+	}
+}
+
+@media only screen and (max-width: 414px) {
+	#bg {
+		background-repeat: no-repeat;
+		background-size: 100vh 350vw;
+		background-position: top;
+		background-attachment: fixed;
+	}
+	#maiboard {
+		background-repeat: no-repeat;
+		background-size: 100vh 350vw;
+		background-position: top;
+		background-attachment: fixed;
+	}
 }
