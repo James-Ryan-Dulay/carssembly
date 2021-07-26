@@ -6,10 +6,10 @@
     <nav class="navbar d-flex flex-wrap justify-content-between bg-dark text-light p-0">
         <a href="/mainboard" class="btn text-light"><h1 class="display-5 p-3 m-0" style="letter-spacing:5px;">Carssembly</h1></a>
         <div class="d-flex align-items-center mr-3">
-            <div style="display: none;" id="drop_menu" class="d-flex align-items-center justify-content-center flex-column bg-dark p-2 rounded">
-                <a href="" class="mt-1">Profile</a>
-                <a href="/logout" class="btn text-danger">Logout</a>
-            </div>
+            <ul class="d-flex flex-column bg-dark m-0 rounded p-0" style="list-style: none;" id="drop_menu">
+                <li id="profiles" style="display:none;" class="pt-2 pb-2 pr-3 pl-3"><a href="">Profile</a></li>
+                <li id="logout" style="display: none;" class="pt-2 pb-2 pr-3 pl-3"><a href="/logout" class="text-danger">Logout</a></li>
+            </ul>
             <img id="profile" class="img-fluid" src="{% static 'img/profile.png' %}">
             <p class="mr-2 ml-2 mb-0">{{request.session.user_firstname}}</p>
             <input id="down_profile" type="image" src="{% static 'img/down_arrow.png' %}" class="img-fluid arrows ml-1">
